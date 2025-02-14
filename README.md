@@ -38,5 +38,5 @@ The project is organized as follows:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Pablo0Aranda/Algorithms.git
+   git clone https://github.com/Pablo0Aranda/Algorithms
 
