@@ -21,10 +21,10 @@ The project is organized as follows:
 
 
 - `Simulated Annealing/`: Contains the implementation of the Simulated Annealing algorithm.
-  - `src/`: Source code for Simulated Annealing.
+  - `src/`: Source code for Simulated Annealing solutions.
   - `Simulated annealing.pdf`: Document with the theoretical explanation and approach of the algorithm.
 - `Tabu Search/`: Contains the implementation of the Tabu Search algorithm.
-  - `src/`: Source code for Tabu Search.
+  - `src/`: Source code for Tabu Search solutions.
   - `Tabu search.pdf`: Document with the theoretical explanation and approach of the algorithm.
 - `Problems/`: Folder that includes the problems solved using the implemented algorithms.
 - `README.md`: This file with documentation.
