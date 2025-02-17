@@ -24,19 +24,23 @@ public class Problema_1 {
     static final double COOLING_RATE = 0.9;
     static final int NUM_MATERIALS = 7;
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         Random random = new Random();
         int[] currentSolution = generateInitialSolution();
         int[] bestSolution = Arrays.copyOf(currentSolution, NUM_MATERIALS);
         double temperature = T_INITIAL;
 
-        while (temperature > T_FINAL) {
+        while (temperature > T_FINAL)
+        {
             int[] newSolution = generateNeighbor(currentSolution);
             int delta = evaluate(newSolution) - evaluate(currentSolution);
 
-            if (delta > 0 || Math.exp(delta / temperature) > random.nextDouble()) {
+            if (delta > 0 || Math.exp(delta / temperature) > random.nextDouble())
+            {
                 currentSolution = newSolution;
-                if (evaluate(currentSolution) > evaluate(bestSolution)) {
+                if (evaluate(currentSolution) > evaluate(bestSolution))
+                {
                     bestSolution = Arrays.copyOf(currentSolution, NUM_MATERIALS);
                 }
             }
@@ -48,14 +52,16 @@ public class Problema_1 {
     }
 
     // Generate an initial random permutation of the materials
-    private static int[] generateInitialSolution() {
+    private static int[] generateInitialSolution()
+    {
         int[] materials = {1, 2, 3, 4, 5, 6, 7};
         shuffleArray(materials);
         return materials;
     }
 
     // Generate a neighbor solution by swapping two materials
-    private static int[] generateNeighbor(int[] solution) {
+    private static int[] generateNeighbor(int[] solution)
+    {
         Random random = new Random();
         int[] newSolution = Arrays.copyOf(solution, NUM_MATERIALS);
         int i = random.nextInt(NUM_MATERIALS);
@@ -70,14 +76,17 @@ public class Problema_1 {
     }
 
     // Evaluate the quality of the solution based on the sum of the first three elements
-    private static int evaluate(int[] solution) {
+    private static int evaluate(int[] solution)
+    {
         return solution[0] + solution[1] + solution[2];
     }
 
     // Shuffle array using Fisher-Yates algorithm
-    private static void shuffleArray(int[] array) {
+    private static void shuffleArray(int[] array)
+    {
         Random random = new Random();
-        for (int i = array.length - 1; i > 0; i--) {
+        for (int i = array.length - 1; i > 0; i--)
+        {
             int index = random.nextInt(i + 1);
             int temp = array[i];
             array[i] = array[index];

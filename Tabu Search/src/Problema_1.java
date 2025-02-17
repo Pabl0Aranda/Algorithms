@@ -19,7 +19,8 @@ De esta condición se deduce que el máximo se alcanzará cuando tengamos en las
 
 import java.util.*;
 
-public class Problema_1 {
+public class Problema_1
+{
     private static final int MAX_ITERATIONS = 10;
     private static final int TABU_TENURE = 5;
     private static final int NUM_ITEMS = 100;
@@ -29,18 +30,23 @@ public class Problema_1 {
     private static int[] weights = new int[NUM_ITEMS];
     private static int[] benefits = new int[NUM_ITEMS];
 
-    private static void initializeItems() {
+    private static void initializeItems()
+    {
         Random rand = new Random();
-        for (int i = 0; i < NUM_ITEMS; i++) {
+        for (int i = 0; i < NUM_ITEMS; i++)
+        {
             weights[i] = rand.nextInt(100) + 1;
             benefits[i] = rand.nextInt(10) + 1;
         }
     }
 
-    private static int evaluate(int[] solution) {
+    private static int evaluate(int[] solution)
+    {
         int totalWeight = 0, totalBenefit = 0;
-        for (int i = 0; i < NUM_ITEMS; i++) {
-            if (solution[i] == 1) {
+        for (int i = 0; i < NUM_ITEMS; i++)
+        {
+            if (solution[i] == 1)
+            {
                 totalWeight += weights[i];
                 totalBenefit += benefits[i];
             }
@@ -48,10 +54,12 @@ public class Problema_1 {
         return totalWeight <= MAX_WEIGHT ? totalBenefit : 0;
     }
 
-    private static List<int[]> getNeighbors(int[] solution) {
+    private static List<int[]> getNeighbors(int[] solution)
+    {
         List<int[]> neighbors = new ArrayList<>();
         Random rand = new Random();
-        while (neighbors.size() < NUM_NEIGHBORS) {
+        while (neighbors.size() < NUM_NEIGHBORS)
+        {
             int[] neighbor = Arrays.copyOf(solution, solution.length);
             int index = rand.nextInt(NUM_ITEMS);
             neighbor[index] = 1 - neighbor[index];
@@ -60,7 +68,8 @@ public class Problema_1 {
         return neighbors;
     }
 
-    public static int[] tabuSearch() {
+    public static int[] tabuSearch()
+    {
         initializeItems();
 
         int[] currentSolution = new int[NUM_ITEMS];
@@ -71,16 +80,20 @@ public class Problema_1 {
 
         int iterations = 0;
 
-        while (iterations < MAX_ITERATIONS) {
+        while (iterations < MAX_ITERATIONS)
+        {
             List<int[]> neighbors = getNeighbors(currentSolution);
             int[] bestNeighbor = currentSolution;
             int bestNeighborValue = Integer.MIN_VALUE;
 
-            for (int[] neighbor : neighbors) {
+            for (int[] neighbor : neighbors)
+            {
                 String key = Arrays.toString(neighbor);
-                if (!tabuList.containsKey(key) || tabuList.get(key) == 0) {
+                if (!tabuList.containsKey(key) || tabuList.get(key) == 0)
+                {
                     int value = evaluate(neighbor);
-                    if (value > bestNeighborValue) {
+                    if (value > bestNeighborValue)
+                    {
                         bestNeighbor = neighbor;
                         bestNeighborValue = value;
                     }
@@ -89,7 +102,8 @@ public class Problema_1 {
 
             currentSolution = bestNeighbor;
 
-            if (bestNeighborValue > bestValue) {
+            if (bestNeighborValue > bestValue)
+            {
                 bestSolution = bestNeighbor;
                 bestValue = bestNeighborValue;
             }
@@ -102,7 +116,8 @@ public class Problema_1 {
         return bestSolution;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         int[] bestSolution = tabuSearch();
         int bestValue = evaluate(bestSolution);
         System.out.println("Best solution found: Benefit = " + bestValue);
@@ -111,23 +126,28 @@ public class Problema_1 {
     }
 
     // Material Mixing Problem with Tabu Search
-    private static void solveMaterialMixing() {
+    private static void solveMaterialMixing()
+    {
         int[] materials = {4, 2, 7, 1, 5, 6, 3};
         int bestScore = evaluateMixing(materials);
 
         Map<String, Integer> tabuList = new HashMap<>();
         int iterations = 0;
 
-        while (iterations < MAX_ITERATIONS) {
+        while (iterations < MAX_ITERATIONS)
+        {
             List<int[]> neighbors = getMixingNeighbors(materials);
             int[] bestNeighbor = materials;
             int bestNeighborScore = Integer.MIN_VALUE;
 
-            for (int[] neighbor : neighbors) {
+            for (int[] neighbor : neighbors)
+            {
                 String key = Arrays.toString(neighbor);
-                if (!tabuList.containsKey(key) || tabuList.get(key) == 0) {
+                if (!tabuList.containsKey(key) || tabuList.get(key) == 0)
+                {
                     int score = evaluateMixing(neighbor);
-                    if (score > bestNeighborScore) {
+                    if (score > bestNeighborScore)
+                    {
                         bestNeighbor = neighbor;
                         bestNeighborScore = score;
                     }
@@ -136,7 +156,8 @@ public class Problema_1 {
 
             materials = bestNeighbor;
 
-            if (bestNeighborScore > bestScore) {
+            if (bestNeighborScore > bestScore)
+            {
                 bestScore = bestNeighborScore;
             }
 
@@ -150,14 +171,18 @@ public class Problema_1 {
         System.out.println("Best insulation score: " + bestScore);
     }
 
-    private static int evaluateMixing(int[] materials) {
+    private static int evaluateMixing(int[] materials)
+    {
         return materials[0] + materials[1] + materials[2];
     }
 
-    private static List<int[]> getMixingNeighbors(int[] materials) {
+    private static List<int[]> getMixingNeighbors(int[] materials)
+    {
         List<int[]> neighbors = new ArrayList<>();
-        for (int i = 0; i < materials.length - 1; i++) {
-            for (int j = i + 1; j < materials.length; j++) {
+        for (int i = 0; i < materials.length - 1; i++)
+        {
+            for (int j = i + 1; j < materials.length; j++)
+            {
                 int[] neighbor = Arrays.copyOf(materials, materials.length);
                 int temp = neighbor[i];
                 neighbor[i] = neighbor[j];

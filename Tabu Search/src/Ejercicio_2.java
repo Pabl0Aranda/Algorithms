@@ -19,7 +19,8 @@ Suponga que:
 
 import java.util.*;
 
-public class Ejercicio_2 {
+public class Ejercicio_2
+{
     private static final int MAX_ITERATIONS = 10;
     private static final int TABU_TENURE = 5;
     private static final int NUM_ITEMS = 100;
@@ -29,18 +30,23 @@ public class Ejercicio_2 {
     private static int[] weights = new int[NUM_ITEMS];
     private static int[] benefits = new int[NUM_ITEMS];
 
-    private static void initializeItems() {
+    private static void initializeItems()
+    {
         Random rand = new Random();
-        for (int i = 0; i < NUM_ITEMS; i++) {
+        for (int i = 0; i < NUM_ITEMS; i++)
+        {
             weights[i] = rand.nextInt(100) + 1;
             benefits[i] = rand.nextInt(10) + 1;
         }
     }
 
-    private static int evaluate(int[] solution) {
+    private static int evaluate(int[] solution)
+    {
         int totalWeight = 0, totalBenefit = 0;
-        for (int i = 0; i < NUM_ITEMS; i++) {
-            if (solution[i] == 1) {
+        for (int i = 0; i < NUM_ITEMS; i++)
+        {
+            if (solution[i] == 1)
+            {
                 totalWeight += weights[i];
                 totalBenefit += benefits[i];
             }
@@ -48,10 +54,12 @@ public class Ejercicio_2 {
         return totalWeight <= MAX_WEIGHT ? totalBenefit : 0;
     }
 
-    private static List<int[]> getNeighbors(int[] solution) {
+    private static List<int[]> getNeighbors(int[] solution)
+    {
         List<int[]> neighbors = new ArrayList<>();
         Random rand = new Random();
-        while (neighbors.size() < NUM_NEIGHBORS) {
+        while (neighbors.size() < NUM_NEIGHBORS)
+        {
             int[] neighbor = Arrays.copyOf(solution, solution.length);
             int index = rand.nextInt(NUM_ITEMS);
             neighbor[index] = 1 - neighbor[index];
@@ -60,7 +68,8 @@ public class Ejercicio_2 {
         return neighbors;
     }
 
-    public static int[] tabuSearch() {
+    public static int[] tabuSearch()
+    {
         initializeItems();
 
         int[] currentSolution = new int[NUM_ITEMS];
@@ -71,16 +80,20 @@ public class Ejercicio_2 {
 
         int iterations = 0;
 
-        while (iterations < MAX_ITERATIONS) {
+        while (iterations < MAX_ITERATIONS)
+        {
             List<int[]> neighbors = getNeighbors(currentSolution);
             int[] bestNeighbor = currentSolution;
             int bestNeighborValue = Integer.MIN_VALUE;
 
-            for (int[] neighbor : neighbors) {
+            for (int[] neighbor : neighbors)
+            {
                 String key = Arrays.toString(neighbor);
-                if (!tabuList.containsKey(key) || tabuList.get(key) == 0) {
+                if (!tabuList.containsKey(key) || tabuList.get(key) == 0)
+                {
                     int value = evaluate(neighbor);
-                    if (value > bestNeighborValue) {
+                    if (value > bestNeighborValue)
+                    {
                         bestNeighbor = neighbor;
                         bestNeighborValue = value;
                     }
@@ -89,7 +102,8 @@ public class Ejercicio_2 {
 
             currentSolution = bestNeighbor;
 
-            if (bestNeighborValue > bestValue) {
+            if (bestNeighborValue > bestValue)
+            {
                 bestSolution = bestNeighbor;
                 bestValue = bestNeighborValue;
             }
@@ -102,7 +116,8 @@ public class Ejercicio_2 {
         return bestSolution;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         int[] bestSolution = tabuSearch();
         int bestValue = evaluate(bestSolution);
         System.out.println("Best solution found: Benefit = " + bestValue);

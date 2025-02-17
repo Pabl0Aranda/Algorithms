@@ -1,0 +1,19 @@
+Problema del TSP: Rutas por España
+Un viajante debe visitar 10 ciudades en España y regresar a la ciudad de origen minimizando la distancia total recorrida. Las ciudades y sus coordenadas aproximadas (en kilómetros) son:
+
+Ciudad	       | X (km)	 |   Y (km) |
+-----------------------------------|
+Madrid	       |  500	 |   500    |
+Barcelona	   |  850	 |   600    |
+Valencia	   |  700	 |   550    | 
+Sevilla	       |  300	 |   400    | 
+Zaragoza	   |  750	 |   650    | 
+Málaga	       |  320	 |   350    | 
+Murcia	       |  600 	 |   500    | 
+Bilbao	       |  600 	 |   800    | 
+Valladolid	   |  480	 |   700    | 
+Santander	   |  550	 |   750    | 
+
+Objetivo:
+Encontrar la ruta más corta que pase por todas las ciudades exactamente una vez y vuelva a la ciudad de origen (ciclo Hamiltoniano).
+Implementar Simulated Annealing (SA) y Tabu Search (TS) para resolverlo.

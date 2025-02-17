@@ -44,7 +44,6 @@ public class Problema_3 {
             int[] newSolution = generateNeighbor(currentSolution);
             int delta = evaluate(newSolution) - evaluate(currentSolution);
             int costNew = calculateCost(newSolution);
-            int costCurrent = calculateCost(currentSolution);
 
             // Accept new solution if it's better and within the cost limit
             if ((delta > 0 && costNew <= MAX_COST) || (costNew <= MAX_COST && Math.exp(delta / temperature) > random.nextDouble())) {

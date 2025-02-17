@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Algorithms.iml" filepath="$PROJECT_DIR$/.idea/Algorithms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Problems/Problems.iml" filepath="$PROJECT_DIR$/Problems/Problems.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Simulated Annealing/Simulated Annealing.iml" filepath="$PROJECT_DIR$/Simulated Annealing/Simulated Annealing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Tabu Search/Tabu Search.iml" filepath="$PROJECT_DIR$/Tabu Search/Tabu Search.iml" />
+    </modules>
+  </component>
+</project>

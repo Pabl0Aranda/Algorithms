@@ -1,0 +1,21 @@
+Descripción:
+Tienes una mochila con capacidad limitada y un conjunto de objetos, cada uno con un peso y un valor. Encuentra la combinación de objetos que maximice el valor total sin superar la capacidad de la mochila.
+
+Requisitos:
+Implementa Simulated Annealing (SA) y Tabu Search (TS) para resolver el problema.
+Representa soluciones como vectores binarios, donde 1 indica que el objeto está en la mochila y 0 que no lo está.
+Usa un operador de vecindad basado en flip de bits (agregar/quitar un objeto).
+
+Entrada de ejemplo:
+
+4 10  // Número de objetos, capacidad de la mochila
+2 3   // Peso, Valor del objeto 1
+3 4   // Peso, Valor del objeto 2
+4 5   // Peso, Valor del objeto 3
+5 8   // Peso, Valor del objeto 4
+
+Salida esperada:
+
+Mejor selección de objetos: [1, 0, 1, 0]  // Se escogieron los objetos 1 y 3
+Valor total: 8
+Peso total: 6

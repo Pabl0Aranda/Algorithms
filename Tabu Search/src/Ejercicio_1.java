@@ -16,22 +16,27 @@ public class Ejercicio_1 {
     private static final int NO_IMPROVEMENT_LIMIT = 10;
     private static final int TABU_TENURE = 3;
 
-    private static int evaluate(int x) {
+    private static int evaluate(int x)
+    {
         return (int) (Math.pow(x, 3) - 60 * Math.pow(x, 2) + 900 * x + 100);
     }
 
-    private static List<Integer> getNeighbors(int x) {
+    private static List<Integer> getNeighbors(int x)
+    {
         List<Integer> neighbors = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 5; i++)
+        {
             int neighbor = x ^ (1 << i); // Flip bit at position i
-            if (neighbor >= 0 && neighbor <= 31) {
+            if (neighbor >= 0 && neighbor <= 31)
+            {
                 neighbors.add(neighbor);
             }
         }
         return neighbors;
     }
 
-    public static int tabuSearch() {
+    public static int tabuSearch()
+    {
         Random rand = new Random();
         int currentSolution = rand.nextInt(32); // Random initial solution (0-31)
         int bestSolution = currentSolution;
@@ -40,15 +45,19 @@ public class Ejercicio_1 {
         Map<Integer, Integer> tabuList = new HashMap<>(); // Solution -> remaining tabu time
         int iterations = 0, noImprovementCount = 0;
 
-        while (iterations < MAX_ITERATIONS && noImprovementCount < NO_IMPROVEMENT_LIMIT) {
+        while (iterations < MAX_ITERATIONS && noImprovementCount < NO_IMPROVEMENT_LIMIT)
+        {
             List<Integer> neighbors = getNeighbors(currentSolution);
             int bestNeighbor = currentSolution;
             int bestNeighborValue = Integer.MIN_VALUE;
 
-            for (int neighbor : neighbors) {
-                if (!tabuList.containsKey(neighbor) || tabuList.get(neighbor) == 0) {
+            for (int neighbor : neighbors)
+            {
+                if (!tabuList.containsKey(neighbor) || tabuList.get(neighbor) == 0)
+                {
                     int value = evaluate(neighbor);
-                    if (value > bestNeighborValue) {
+                    if (value > bestNeighborValue)
+                    {
                         bestNeighbor = neighbor;
                         bestNeighborValue = value;
                     }
@@ -58,11 +67,14 @@ public class Ejercicio_1 {
             currentSolution = bestNeighbor;
 
             // Update best solution found
-            if (bestNeighborValue > bestValue) {
+            if (bestNeighborValue > bestValue)
+            {
                 bestSolution = bestNeighbor;
                 bestValue = bestNeighborValue;
                 noImprovementCount = 0;
-            } else {
+            }
+            else
+            {
                 noImprovementCount++;
             }
 
@@ -75,7 +87,8 @@ public class Ejercicio_1 {
         return bestSolution;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         int bestX = tabuSearch();
         int bestValue = evaluate(bestX);
         System.out.println("Best solution found: x = " + bestX + ", f(x) = " + bestValue);

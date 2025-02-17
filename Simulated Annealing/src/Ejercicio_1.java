@@ -30,8 +30,6 @@ public class Ejercicio_1 {
     static final int T_FINAL = 1;
     // Cooling rate (geometric cooling strategy)
     static final double COOLING_RATE = 0.9;
-    // Number of neighbors to consider
-    static final int NUM_NEIGHBORS = 5;
 
     public static void main(String[] args) {
         Random random = new Random();
