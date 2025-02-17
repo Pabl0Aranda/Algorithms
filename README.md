@@ -26,7 +26,6 @@ The project is organized as follows:
 - `Tabu Search/`: Contains the implementation of the Tabu Search algorithm.
   - `src/`: Source code for Tabu Search solutions.
   - `Tabu search.pdf`: Document with the theoretical explanation and approach of the algorithm.
-- `Problems/`: Folder that includes the problems solved using the implemented algorithms.
 - `README.md`: This file with documentation.
 
 ## Requirements
